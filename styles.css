@@ -1,0 +1,82 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+}
+
+h1{
+    font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p{
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.contenedor-juego {
+   position:relative;
+   width:80vw;
+   height: 50vw;
+   max-width: 700px;
+   max-height: 400px;
+    border: 2px solid rgb(26, 26, 26);
+    border-radius: 16px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.sombrero{
+    position: absolute;
+    top: calc(100% - 130px); /* para que quede a la misma altura del personaje */
+    left: -60px; /* para que el sombrero comience desde afuera */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: moveHorizontal 1.9s linear infinite;
+}
+
+
+.personaje {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 80px; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.personaje img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sombrero img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+@keyframes moveHorizontal {
+    from {
+        left: -60px;
+    }
+    to {
+        left: 100%; 
+    }
+}
+
+
