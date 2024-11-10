@@ -27,7 +27,7 @@
 const personaje = document.getElementById('personaje');
 const sombrero = document.getElementById('sombrero');
 const puntajeMostrar = document.getElementById('puntos');
-let velocidadSombrero = 3;
+let velocidadSombrero = 4;
 
 let puntaje = 0;
 let sombreroDetenido = false; // para saber si el gorro esta detenido
@@ -47,10 +47,12 @@ function pararSombrero() {
     const distanciaHorizontal = Math.abs(centroSombreroX - centroPersonajeX);
 
     // Ajuste para verificar si el sombrero está alineado horizontalmente con el personaje
-    if (distanciaHorizontal < 8) { // Asegura una tolerancia de 15px para el acierto
+    if (distanciaHorizontal < 8) { // Asegura una tolerancia de 5px para el acierto
         puntaje++;
         puntajeMostrar.textContent = puntaje;
-        velocidadSombrero *= 0.9; // Aumenta la velocidad reduciendo el tiempo
+        if(puntaje <=16){
+            velocidadSombrero *= 0.9; // Aumenta la velocidad reduciendo el tiempo
+        }
     }
 
     // Reiniciar el sombrero después de 1 segundo
