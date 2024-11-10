@@ -12,14 +12,17 @@ body{
     text-align: center;
 }
 
-p{
+h1{
     font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p{
+    font-family: "Roboto", serif;
     font-weight: 400;
     font-style: normal;
 }
-
-
-
 .contenedor-juego {
    position:relative;
    width:80vw;
@@ -39,7 +42,7 @@ p{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    animation: moveHorizontal 2s linear infinite;
+    animation: moveHorizontal 1.9s linear infinite;
 }
 
 
@@ -66,7 +69,6 @@ p{
     height: 70px;
     object-fit: contain;
 }
-
 
 @keyframes moveHorizontal {
     from {
