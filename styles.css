@@ -20,6 +20,7 @@ p{
 
 
 
+
 .contenedor-juego {
    position:relative;
    width: 90vw;
@@ -34,7 +35,7 @@ p{
 
 .sombrero{
     position: absolute;
-    top: calc(100% - 130px); /* para que quede a la misma altura del personaje */
+    top: calc(100% - 245px); /* para que quede a la misma altura del personaje */
     left: -60px; /* para que el sombrero comience desde afuera */
     background-size: contain;
     background-repeat: no-repeat;
@@ -45,26 +46,43 @@ p{
 
 .personaje {
     position: absolute;
-    bottom: 20px; 
+    bottom: 90px; 
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 80px; 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .personaje img{
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 110px; 
     object-fit: contain;
 }
 
 .sombrero img {
-    width: 70px;
-    height: 70px;
+    width: 95px;
+    height: 95px;
     object-fit: contain;
+}
+
+.animacion-puntos {
+    animation: resaltarPuntos 0.3s ease; /* Animación rápida de 0.3 segundos */
+
+}
+
+@keyframes resaltarPuntos {
+    0% {
+        color: #000; /* Color original */
+    }
+    50% {
+        transform: scale(1.5); /* Agranda el puntaje temporalmente */
+        color: #04c03c; /* Cambia a un color brillante (tomato) */
+    }
+    100% {
+        transform: scale(1); /* Vuelve al tamaño normal */
+        color: #000; /* Regresa al color original */
+    }
 }
 
 
@@ -78,3 +96,28 @@ p{
 }
 
 
+@media (max-width: 600px) {
+
+
+    .personaje {
+        bottom: 20px; 
+      
+    }
+
+    .personaje img{
+        width: 50px;
+        height: 70px; 
+    }
+
+    .sombrero {
+        position: absolute;
+        top: calc(100% - 125px); /* para que quede a la misma altura del personaje */
+        
+    }
+
+    .sombrero img{
+        width: 65px;
+        height: 65px;
+        object-fit: contain;
+    }
+}

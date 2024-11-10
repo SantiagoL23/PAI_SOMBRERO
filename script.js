@@ -46,14 +46,23 @@ function pararSombrero() {
     const centroPersonajeX = posicionPersonaje.left + posicionPersonaje.width / 2;
     const distanciaHorizontal = Math.abs(centroSombreroX - centroPersonajeX);
 
+
+    function aplicarAnimacionPuntos() {
+        puntajeMostrar.classList.add('animacion-puntos');
+        setTimeout(() => puntajeMostrar.classList.remove('animacion-puntos'), 300); // Elimina la clase para reiniciar la animación
+    }
     // Ajuste para verificar si el sombrero está alineado horizontalmente con el personaje
     if (distanciaHorizontal < 8) { // Asegura una tolerancia de 5px para el acierto
         puntaje++;
         puntajeMostrar.textContent = puntaje;
-        if(puntaje <=16){
+        aplicarAnimacionPuntos(); // Llama a la animación aquí después de sumar puntos
+
+        if(puntaje <=13){
             velocidadSombrero *= 0.9; // Aumenta la velocidad reduciendo el tiempo
         }
     }
+
+     
 
     // Reiniciar el sombrero después de 1 segundo
     setTimeout(() => {
