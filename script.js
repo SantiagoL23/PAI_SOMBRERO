@@ -37,6 +37,12 @@ function pararSombrero() {
     sombreroDetenido = true;
     sombrero.style.animationPlayState = 'paused'; // Pausa la animación
 
+
+    function aplicarAnimacionPuntos() {
+        puntajeMostrar.classList.add('animacion-puntos');
+        setTimeout(() => puntajeMostrar.classList.remove('animacion-puntos'), 300); // Elimina la clase para reiniciar la animación
+    }
+
     // Obtener la posición del personaje y del sombrero
     const posicionPersonaje = personaje.getBoundingClientRect();
     const posicionSombrero = sombrero.getBoundingClientRect();
@@ -47,17 +53,14 @@ function pararSombrero() {
     const distanciaHorizontal = Math.abs(centroSombreroX - centroPersonajeX);
 
 
-    function aplicarAnimacionPuntos() {
-        puntajeMostrar.classList.add('animacion-puntos');
-        setTimeout(() => puntajeMostrar.classList.remove('animacion-puntos'), 300); // Elimina la clase para reiniciar la animación
-    }
+    
     // Ajuste para verificar si el sombrero está alineado horizontalmente con el personaje
-    if (distanciaHorizontal < 8) { // Asegura una tolerancia de 5px para el acierto
+    if (distanciaHorizontal < 6) { // Asegura una tolerancia de 5px para el acierto
         puntaje++;
         puntajeMostrar.textContent = puntaje;
         aplicarAnimacionPuntos(); // Llama a la animación aquí después de sumar puntos
 
-        if(puntaje <=13){
+        if(puntaje <=8){
             velocidadSombrero *= 0.9; // Aumenta la velocidad reduciendo el tiempo
         }
     }
@@ -65,12 +68,16 @@ function pararSombrero() {
      
 
     // Reiniciar el sombrero después de 1 segundo
-    setTimeout(() => {
-        sombreroDetenido = false;
-        sombrero.style.animation = 'none'; // Reinicia la animación
-        void sombrero.offsetWidth; // Forzar el reinicio
-        sombrero.style.animation = `moveHorizontal ${velocidadSombrero}s linear infinite` // Reinicia el movimiento
-    }, 500);
+   
+   
+        setTimeout(() => {
+            sombreroDetenido = false;
+            sombrero.style.animation = 'none'; // Reinicia la animación
+            void sombrero.offsetWidth; // Forzar el reinicio
+            sombrero.style.animation = `moveHorizontal ${velocidadSombrero}s linear infinite` // Reinicia el movimiento
+        }, 300);
+
+    
 }
 
 document.body.addEventListener('keydown', (evento) => {
