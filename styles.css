@@ -45,14 +45,14 @@ body {
 }
 
 .personaje img {
-    width: 90px;
-    height: 110px;
+    width: 140px;
+    height: 160px;
     object-fit: contain;
 }
 
 .sombrero {
     position: absolute;
-    top: calc(100% - 205px); /* Para que el sombrero quede a la misma altura del personaje */
+    top: calc(100% - 215px); /* Para que el sombrero quede a la misma altura del personaje */
     left: -60px;
     animation: moveHorizontal 4s linear infinite;
     -webkit-animation: moveHorizontal 4s linear infinite; /* Compatibilidad con WebKit */
@@ -79,6 +79,11 @@ body {
 .contenedor-juego.puntaje-anotado {
     border-color: #04c03c; /* Borde verde cuando se anota un punto */
 }
+
+.contenedor-juego.fallo {
+    border-color: #c02004; /* Borde verde cuando se anota un punto */
+}
+
 
 @keyframes resaltarPuntos {
     0% {
@@ -125,8 +130,8 @@ body {
 
 @media (max-width: 600px) {
     .personaje img {
-        width: 50px;
-        height: 70px;
+        width: 90px;
+        height: 110px;
     }
 
     .sombrero img {        
@@ -135,6 +140,6 @@ body {
     }
 
     .sombrero {
-        top: calc(100% - 150px); /* Para que el sombrer quede a la misma altura del personaje */
+        top: calc(100% - 165px); /* Para que el sombrer quede a la misma altura del personaje */
     }
 }

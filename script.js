@@ -14,8 +14,10 @@ function actualizarSombrero() {
         sombreroImg.src = 'img/sombrero_verde.png'; // Cambia a sombrero verde
     
     } else if (puntaje === 10) {
-        sombreroImg.src = 'img/galera.png'; // Cambia a galera
+        sombreroImg.src = 'img/sombrero_galera.png'; // Cambia a galera
+
     }
+    
 }
 
 
@@ -25,43 +27,53 @@ function pararSombrero() {
     sombreroDetenido = true;
     sombrero.style.animationPlayState = 'paused'; // Pausa la animación
 
-    // Obtener las posiciones del personaje y del sombrero
-    const posicionPersonaje = personaje.getBoundingClientRect();
-    const posicionSombrero = sombrero.getBoundingClientRect();
+    // Calcular las posiciones de personaje y sombrero usando requestAnimationFrame
+    requestAnimationFrame(() => {
+        const posicionPersonaje = personaje.getBoundingClientRect();
+        const posicionSombrero = sombrero.getBoundingClientRect();
 
-    // Calcular la posición horizontal central
-    const centroSombreroX = posicionSombrero.left + posicionSombrero.width / 2;
-    const centroPersonajeX = posicionPersonaje.left + posicionPersonaje.width / 2;
-    const distanciaHorizontal = Math.abs(centroSombreroX - centroPersonajeX);
+        // Calcular la posición horizontal central
+        const centroSombreroX = posicionSombrero.left + posicionSombrero.width / 2 ;
+        const centroPersonajeX = posicionPersonaje.left + posicionPersonaje.width / 2;
+        const distanciaHorizontal = Math.abs(centroSombreroX - centroPersonajeX);
 
-    // Verifica si el sombrero está alineado horizontalmente con el personaje
-    if (distanciaHorizontal < 7) { // Tolerancia de px para el acierto
-        puntaje++;
-        puntajeMostrar.textContent = puntaje;
-        puntajeMostrar.classList.add('animacion-puntos');
-        setTimeout(() => puntajeMostrar.classList.remove('animacion-puntos'), 300);
-        
+        // Verifica si el sombrero está alineado horizontalmente con el personaje
+        if (distanciaHorizontal < 6) { // Aumenté la tolerancia a 8px
+            puntaje++;
+            if (puntaje <= 16) {
+                velocidadSombrero *= 0.9; // Aumentar velocidad hasta los 12 puntos
+            }
+            puntajeMostrar.textContent = puntaje;
+            puntajeMostrar.classList.add('animacion-puntos');
+            setTimeout(() => puntajeMostrar.classList.remove('animacion-puntos'), 500);
 
-        contenedorJuego.classList.add('puntaje-anotado');
-        setTimeout(() => {
-            contenedorJuego.classList.remove('puntaje-anotado');
-        }, 500); // El borde verde se mantiene durante 500ms
+            contenedorJuego.classList.add('puntaje-anotado');
+            setTimeout(() => {
+                contenedorJuego.classList.remove('puntaje-anotado');
+            }, 900); // El borde verde se mantiene durante 500ms
 
-
-        if (puntaje <= 15) {
-            velocidadSombrero *= 0.9; // Aumentar velocidad hasta los 14 puntos
+            setTimeout(() => { // Reinicia el sombrero tras 800ms
+                reiniciarSombrero();
+            }, 900);
+        } else {
+            // Si no gana punto, reinicia el sombrero tras 400ms
+            setTimeout(() => {
+                reiniciarSombrero();
+            }, 400);
+            contenedorJuego.classList.add('fallo');
+            setTimeout(() => {
+                contenedorJuego.classList.remove('fallo');
+            }, 400); // El borde verde se mantiene durante 500ms
         }
-
-        setTimeout(() => { // Reinicia el sombrero tras 800ms
-            reiniciarSombrero();
-        }, 800);
-    } else {
-        // Si no gana punto, reinicia el sombrero tras 400ms
-        setTimeout(() => {
-            reiniciarSombrero();
-        }, 400);
-    }
+    });
 }
+
+// Event listener para la tecla Espacio
+document.body.addEventListener('keydown', (evento) => {
+    if (evento.code === 'Space') {
+        pararSombrero();
+    }
+});
 
 // Función para reiniciar el sombrero
 function reiniciarSombrero() {
@@ -71,10 +83,3 @@ function reiniciarSombrero() {
     sombrero.style.animation = `moveHorizontal ${velocidadSombrero}s linear infinite`;
     actualizarSombrero(); // Cambiar sombrero si corresponde
 }
-
-// Event listener para la tecla Espacio
-document.body.addEventListener('keydown', (evento) => {
-    if (evento.code === 'Space') {
-        pararSombrero();
-    }
-});
