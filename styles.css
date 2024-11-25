@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+/* Importación de la fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap'); 
 
 * {
     margin: 0;
@@ -12,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Altura mínima de la pantalla */
     background-color: #f4f4f4;
     text-align: center;
 }
@@ -21,48 +22,47 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 20px; /* Espaciado entre elementos */
 }
 
 .contenedor-juego {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end; /* Para alinear elementos al fondo */
     justify-content: center;
-    position: relative;
-    width: 95vw;
-    height: 70vw;
-    max-width: 700px;
+    position: relative; /*  Para posicionar elementos dentro (gorro y personaje)*/
+    width: 95vw; /* Ancho relativo al viewport */
+    height: 70vw; /* Altura relativa al viewport */
+    max-width: 700px; /* Ancho máximo (para que el juego sea justo en distintos dispositivos) */
     max-height: 400px;
     border: 2px solid #1a1a1a;
     border-radius: 16px;
-    overflow: hidden;
+    overflow: hidden; 
     background-color: #fff;
 }
 
 .personaje {
-    position: relative;
-    bottom: 50px;
+    position: relative; /* Para ajustar la posición */
+    bottom: 50px; /* Mover hacia arriba (desde el fondo del contenedor) */
 }
 
 .personaje img {
     width: 140px;
     height: 160px;
-    object-fit: contain;
+    object-fit: contain; /* Ajusta las proporciones sin deformar */
 }
 
 .sombrero {
-    position: absolute;
-    top: calc(100% - 215px); /* Para que el sombrero quede a la misma altura del personaje */
-    left: -60px;
-    animation: moveHorizontal 4s linear infinite;
+    position: absolute; /* Posición absoluta dentro del contenedor */
+    top: calc(100% - 215px); /* Ajusta la altura para que el sombrero quede a la misma altura del personaje */
+    left: -60px; /* Comienza fuera de la pantalla */
+    animation: moveHorizontal 4s linear infinite; /* Animación para que se mueva horizontalmente */
     -webkit-animation: moveHorizontal 4s linear infinite; /* Compatibilidad con WebKit */
-
 }
 
 .sombrero img {
     width: 100px;
     height: 100px;
-    object-fit: contain;
+    object-fit: contain; /* Ajusta las proporciones sin deformar */
 }
 
 .sistema-puntos p {
@@ -73,7 +73,6 @@ body {
 .animacion-puntos {
     animation: resaltarPuntos 0.3s ease;
     -webkit-animation: resaltarPuntos 0.3s ease; /* Compatibilidad con WebKit */
-
 }
 
 .contenedor-juego.puntaje-anotado {
@@ -81,9 +80,8 @@ body {
 }
 
 .contenedor-juego.fallo {
-    border-color: #c02004; /* Borde verde cuando se anota un punto */
+    border-color: #c02004; /* Borde rojo cuando se anota un punto */
 }
-
 
 @keyframes resaltarPuntos {
     0% {
@@ -109,13 +107,12 @@ body {
     }
 }
 
-
 @keyframes moveHorizontal {
     from {
-        left: -60px;
+        left: -60px;  /* Comienza fuera del contenedor */
     }
     to {
-        left: 100%;
+        left: 100%;  /* Se mueve hasta el otro extremo */
     }
 }
 
@@ -140,6 +137,6 @@ body {
     }
 
     .sombrero {
-        top: calc(100% - 165px); /* Para que el sombrer quede a la misma altura del personaje */
+        top: calc(100% - 165px); /* Ajustar altura para pantallas pequeñas */
     }
 }

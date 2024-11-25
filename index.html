@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pai 2</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Consigue la galera</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
-<body onclick="pararSombrero()">
+<!-- Evento para detener el sombrero al hacer clic en cualquier lugar -->
+<body onclick="pararSombrero()"> 
+    <!-- Contenedor principal que agrupa el juego y el sistema de puntaje -->
     <div class="contenedor">
+        <!-- Área principal del juego -->
         <div class="contenedor-juego">
+            <!-- Contenedor del personaje -->
             <div id="personaje" class="personaje">
-                <img src="img/personaje.png" alt="Personaje">
+                <img src="img/personaje.png" alt="Personaje"> <!-- Imagen del personaje -->
             </div>
+            <!-- Contenedor del sombrero -->
             <div id="sombrero" class="sombrero">
-                <img src="img/sombrero.png" alt="Sombrero">
+                <img src="img/sombrero.png" alt="Sombrero"> <!-- Imagen del sombrero -->
             </div>
         </div>
+        <!-- Sección del puntaje -->
         <div class="sistema-puntos">
-            <p>Puntaje: <span id="puntos">0</span></p>
+            <!-- Texto del puntaje con un span para actualizar dinámicamente -->
+            <p>Puntaje: <span id="puntos">0</span></p> 
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
 </body>
 </html>
